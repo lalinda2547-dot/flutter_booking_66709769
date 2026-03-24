@@ -6,7 +6,7 @@ class BookingPage extends StatefulWidget {
 
   final Map room;
 
-  const BookingPage({super.key, required this.room});
+  const BookingPage({super.key, required this.room, required String name});
 
   @override
   State<BookingPage> createState() => _BookingPageState();
@@ -105,7 +105,7 @@ class _BookingPageState extends State<BookingPage> {
     }
 
     var url = Uri.parse(
-        "http://localhost/flutter_booking_66708120/php_api/add_booking.php");
+        "http://localhost/flutter_booking_66709769/php_api/add_booking.php");
 
     var response = await http.post(
       url,

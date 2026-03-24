@@ -3,20 +3,21 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'booking_page.dart';
 import 'booking_list.dart';
+import 'home_page.dart';
 
 //////////////////////////////////////////////////////////////
 // API URL
 //////////////////////////////////////////////////////////////
 
-const String baseUrl = "http://localhost/flutter_booking_66708120/php_api/";
+const String baseUrl = "http://localhost/flutter_booking_66709769/php_api/";
 
 //////////////////////////////////////////////////////////////
 // ROOM LIST PAGE
 //////////////////////////////////////////////////////////////
 
 class RoomList extends StatefulWidget {
-const RoomList({super.key});
-
+final String name;
+const RoomList({super.key, required this.name});
 @override
 State<RoomList> createState() => _RoomListState();
 }
@@ -114,7 +115,23 @@ return Scaffold(
           );
 
         },
-      )
+      ),
+
+
+       IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
+                (route) => false,
+              );
+
+            },
+          ),
 
     ],
   ),
@@ -247,10 +264,12 @@ trailing: Wrap(
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => BookingPage(room: room),
+            builder: (_) => BookingPage(
+            room: room,
+            name: widget.name,
+            ),
           ),
         );
-
       },
     ),
 
